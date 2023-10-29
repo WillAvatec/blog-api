@@ -17,4 +17,4 @@ router.put("/:id");
 // Erase one specific post from database
 router.delete("/:id");
 
-export default { postRouter: router };
+export default router;
