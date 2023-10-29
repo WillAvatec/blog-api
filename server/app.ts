@@ -1,7 +1,11 @@
+import "dotenv/config";
 import express from "express";
 import morgan from "morgan";
-import "dotenv/config";
 import { postRouter } from "./routes";
+import mongoConnect from "./utils/connection";
+
+mongoConnect().catch(() => console.log("Couldn't connect to MongoDB"));
+
 // Initialize server
 const app = express();
 const port = process.env.PORT || 3000;
