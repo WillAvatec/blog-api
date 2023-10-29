@@ -1,5 +1,6 @@
 import express from "express";
 import morgan from "morgan";
+import "dotenv/config";
 // Initialize server
 const app = express();
 const port = process.env.PORT || 3000;
