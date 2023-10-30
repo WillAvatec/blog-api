@@ -1,5 +1,6 @@
 import { Post } from "../models";
 import asyncHand from "express-async-handler";
+import template from "../utils/jsonTemplate";
 
 const postsController = (() => {
   const posts_get_all = asyncHand(async (req, res) => {
@@ -8,14 +9,28 @@ const postsController = (() => {
     console.log(allPosts);
 
     // If there are no posts in db, it will return an empty array
-    res.json(allPosts);
+    res.json(template({ data: allPosts }));
   });
 
   const posts_get_one = asyncHand(async (req, res) => {
     const onePost = await Post.findById(req.params.id)
       .populate(["author", "comments"])
       .exec();
-    res.json(onePost);
+
+    if (onePost === null) {
+      res.status(404).json(
+        template({
+          status: "error",
+          message: "Post not found, it probably doesn't exists",
+        })
+      );
+      return;
+    }
+    res.json(
+      template({
+        data: onePost,
+      })
+    );
   });
 
   const posts_new = asyncHand(async (req, res) => {
@@ -26,7 +41,11 @@ const postsController = (() => {
     });
 
     const saved = await newPost.save();
-    res.status(201).json(saved);
+    res.status(201).json(
+      template({
+        data: saved,
+      })
+    );
   });
 
   const posts_put = asyncHand(async (req, res) => {
@@ -34,29 +53,43 @@ const postsController = (() => {
     const post = await Post.findById(req.params.id);
     if (post === null) {
       // Resource not found
-      res.status(404).json({
-        err: "Resource not found",
-      });
+      res.status(404).json(
+        template({
+          status: "error",
+          message: "Resource not found",
+        })
+      );
       return;
     }
     post.content = req.body.content;
     post.updatedAt = new Date();
 
     const saved = await post.save({ timestamps: true });
-    res.status(202).json(saved);
+    res.status(202).json(
+      template({
+        data: saved,
+      })
+    );
   });
 
   const posts_delete = asyncHand(async (req, res) => {
     const post = await Post.findById(req.params.id);
     if (post === null) {
       // Resource not found
-      res.status(404).json({
-        err: "Resource not found",
-      });
+      res.status(404).json(
+        template({
+          status: "error",
+          message: "Resource not found",
+        })
+      );
       return;
     }
 
-    res.status(200).end();
+    res.status(200).json(
+      template({
+        message: "Post deleted successfully, comments are lost now",
+      })
+    );
   });
 
   return {
