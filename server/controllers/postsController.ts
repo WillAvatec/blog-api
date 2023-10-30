@@ -1,7 +1,7 @@
 import { Post } from "../models";
 import asyncHand from "express-async-handler";
 import template from "../utils/jsonTemplate";
-import { body } from "express-validator";
+import { body, validationResult } from "express-validator";
 
 const postsController = (() => {
   const posts_get_all = asyncHand(async (req, res) => {
@@ -38,6 +38,20 @@ const postsController = (() => {
     body("title", "Title field must not be empty").trim().isLength({ min: 1 }),
     body("content", "Post has no content").trim().isLength({ min: 1 }),
     asyncHand(async (req, res) => {
+      // Check for errors
+      const errors = validationResult(req).formatWith(
+        (err) => err.msg as string
+      );
+      if (!errors.isEmpty()) {
+        res.status(400).json(
+          template({
+            status: "error",
+            data: req.body,
+            message: errors.array(),
+          })
+        );
+        return;
+      }
       const newPost = new Post({
         author: req.body.author, // TODO: req.user._id -- The author must be the logged user
         title: req.body.title,
