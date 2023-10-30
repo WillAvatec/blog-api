@@ -1,6 +1,7 @@
 import { Post } from "../models";
 import asyncHand from "express-async-handler";
 import template from "../utils/jsonTemplate";
+import { body } from "express-validator";
 
 const postsController = (() => {
   const posts_get_all = asyncHand(async (req, res) => {
@@ -33,20 +34,24 @@ const postsController = (() => {
     );
   });
 
-  const posts_new = asyncHand(async (req, res) => {
-    const newPost = new Post({
-      author: req.body.author,
-      title: req.body.title,
-      content: req.body.content,
-    });
+  const posts_new = [
+    body("title", "Title field must not be empty").trim().isLength({ min: 1 }),
+    body("content", "Post has no content").trim().isLength({ min: 1 }),
+    asyncHand(async (req, res) => {
+      const newPost = new Post({
+        author: req.body.author, // TODO: req.user._id -- The author must be the logged user
+        title: req.body.title,
+        content: req.body.content,
+      });
 
-    const saved = await newPost.save();
-    res.status(201).json(
-      template({
-        data: saved,
-      })
-    );
-  });
+      const saved = await newPost.save();
+      res.status(201).json(
+        template({
+          data: saved,
+        })
+      );
+    }),
+  ];
 
   const posts_put = asyncHand(async (req, res) => {
     // For the find to work,the id must be at least 10+ characters long
