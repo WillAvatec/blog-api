@@ -12,6 +12,8 @@ const port = process.env.PORT || 3000;
 
 // MultiRoute Middlewares
 app.use(morgan("dev"));
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
 
 // Router middlewares
 app.use("/posts", postRouter);
