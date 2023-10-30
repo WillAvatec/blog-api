@@ -1,7 +1,7 @@
 type Template = {
   status: "ok" | "error";
   data: object;
-  message: string;
+  message: string | string[];
 };
 
 export default function jsonTemplate({
