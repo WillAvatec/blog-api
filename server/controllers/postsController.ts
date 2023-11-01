@@ -15,7 +15,8 @@ const postsController = (() => {
 
   const posts_get_one = asyncHand(async (req, res) => {
     const onePost = await Post.findById(req.params.id)
-      .populate(["author", "comments"])
+      .populate("author", "username")
+      .populate("comments")
       .exec();
 
     if (onePost === null) {
