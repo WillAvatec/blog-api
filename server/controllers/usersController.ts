@@ -11,17 +11,19 @@ const controller = (function () {
       .withMessage("Username must be at least 5 characters long and 20 at max")
       .custom(async (input) => {
         const user = await User.findOne({ username: input });
-        return user === null;
+        if (user) {
+          throw new Error("Username is already taken!");
+        }
       })
       .withMessage("Username is already taken, please use another one"),
     body(
       "password",
-      "Password should be a combination of one uppercase, one lowercase , min 5 characters"
+      "Password should be a combination of one uppercase, one lowercase , one number, min 8 characters"
     )
       .trim()
-      .isStrongPassword({ minLength: 8, minLowercase: 1, minUppercase: 1 }),
-    body("dbl_password", "Passwords do not match").custom((input, meta) => {
-      return input !== meta.req.body.password;
+      .isStrongPassword({ minSymbols: 0 }),
+    body("dbl_password", "Passwords do not match").custom((input, { req }) => {
+      return input === req.body.password;
     }),
     asyncHand(async (req, res) => {
       // Check for errors
