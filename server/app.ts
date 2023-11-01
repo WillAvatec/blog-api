@@ -1,7 +1,7 @@
 import "dotenv/config";
 import express from "express";
 import morgan from "morgan";
-import { postRouter } from "./routes";
+import { postRouter, userRouter } from "./routes";
 import mongoConnect from "./utils/connection";
 
 mongoConnect().catch(() => console.log("Couldn't connect to MongoDB"));
@@ -17,6 +17,7 @@ app.use(express.json());
 
 // Router middlewares
 app.use("/posts", postRouter);
+app.use("/users", userRouter);
 
 app.listen(port, () => {
   console.log("Server ON: Start listening in " + port);
