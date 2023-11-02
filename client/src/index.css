@@ -128,16 +128,14 @@ footer {
   gap: 1.2rem;
 }
 
-footer a {
-  text-decoration: underline;
-}
-
 .devicon {
   font-size: 2rem;
   margin-bottom: 0.5rem;
+  position: relative;
+  z-index: 1;
 }
 
-.devicon:hover {
+.github-link:hover {
   transform: scale(1.2);
-  cursor: pointer;
+  transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
