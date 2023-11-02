@@ -55,7 +55,7 @@ button {
   transition: border-color 0.25s;
 }
 button:hover {
-  border-color: #646cff;
+  border-color: white;
 }
 button:focus,
 button:focus-visible {
@@ -139,4 +139,58 @@ footer {
 .github-link:hover {
   transform: scale(1.2);
   transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+/* SIGN IN FORM */
+
+.wrapper {
+  outline: 1px solid red;
+  display: flex;
+  flex-direction: column;
+  place-items: center;
+}
+
+.logo-wrapper {
+  background-color: #535bf2;
+  width: 100%;
+  padding: 1rem 2rem;
+  margin-left: 20px;
+  margin-bottom: 4rem;
+}
+
+form#sign-in {
+  background-color: #1a1a1a;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 350px;
+  padding: 2rem;
+  border-radius: 18px;
+}
+
+#sign-in h1 {
+  color: white;
+  font-size: 1.82rem;
+}
+
+#sign-in button[type="submit"] {
+  color: #1a1a1a;
+  background: white;
+}
+
+#sign-in input {
+  border: 0;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  background-color: #494949;
+  color: #e1e1e1;
+  padding: 1.1rem 2rem;
+  margin: 1.72rem 10px;
+}
+
+#sign-in input:focus,
+#sign-in input:focus-visible {
+  outline: 2px solid white;
 }
