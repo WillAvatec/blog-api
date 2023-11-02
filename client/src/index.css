@@ -3,10 +3,9 @@
   line-height: 1.5;
   font-weight: 400;
 
-  color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
+  /*   background-color: #242424;
+ */
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -16,17 +15,25 @@
 
 a {
   font-weight: 500;
-  color: #646cff;
+  color: white;
   text-decoration: inherit;
 }
-a:hover {
-  color: #535bf2;
+
+li {
+  list-style: none;
+  padding: 4px 15px;
+  outline: 2px solid white;
+}
+li:hover {
+  cursor: pointer;
+  background-color: white;
+}
+li:hover a {
+  color: #242424;
 }
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
   min-width: 320px;
   min-height: 100vh;
 }
@@ -55,15 +62,82 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+/* INTRO */
+
+.intro-wrapper {
+  padding: 1rem 2rem;
+  background-color: #535bf2;
+  display: flex;
+}
+
+.intro {
+  color: #ffffff;
+  width: 100%;
+  position: relative;
+}
+
+.intro-content {
+  margin: 0 auto 30px;
+  text-align: center;
+}
+
+.intro-content img {
+  width: 22px;
+  height: 38px;
+  position: absolute;
+  bottom: -30px;
+  left: 50%;
+  margin-left: -10px;
+}
+
+.manu-logo {
+  font-size: 2rem;
+  margin: 0;
+}
+
+.manu-logo:hover {
+  cursor: pointer;
+}
+
+.manu-logo::first-letter {
+  color: orange;
+  font-weight: 600;
+}
+
+.manu-logo span {
+  color: #b5b5b5;
+}
+
+header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Footer */
+
+footer {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  background-color: #242424;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+footer a {
+  text-decoration: underline;
+}
+
+.devicon {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.devicon:hover {
+  transform: scale(1.2);
+  cursor: pointer;
 }
