@@ -1,16 +1,13 @@
 import flagImg from "../assets/flag.png";
 import { Link } from "react-router-dom";
+import Logo from "./Logo";
 
 const Intro = () => {
   return (
     <div className="intro-wrapper">
       <div className="intro">
         <header>
-          <p className="manu-logo">
-            <a href="/">
-              Manu<span>blogs</span>
-            </a>
-          </p>
+          <Logo />
           <ul className="header-links">
             <li>
               <Link to="/sign-in"> Sign In </Link>
