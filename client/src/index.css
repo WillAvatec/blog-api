@@ -21,15 +21,6 @@ a {
 
 li {
   list-style: none;
-  padding: 4px 15px;
-  outline: 2px solid white;
-}
-li:hover {
-  cursor: pointer;
-  background-color: white;
-}
-li:hover a {
-  color: #242424;
 }
 
 body {
@@ -106,6 +97,18 @@ button:focus-visible {
 
 .manu-logo span {
   color: #b5b5b5;
+}
+
+.header-links a {
+  padding: 8px 20px;
+  outline: 2px solid white;
+}
+
+.header-links a:hover,
+.header-links a:focus,
+.header-links a:focus-visible {
+  color: #1a1a1a;
+  background-color: white;
 }
 
 header {
