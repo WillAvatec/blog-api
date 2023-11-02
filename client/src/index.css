@@ -118,7 +118,8 @@ header {
 /* Footer */
 
 footer {
-  position: absolute;
+  position: fixed;
+  z-index: 2;
   width: 100%;
   bottom: 0;
   background-color: #242424;
