@@ -15,7 +15,7 @@ function reducer(state, action) {
     case "update-confirm": {
       return {
         ...state,
-        confirm: action.newValue,
+        dbl_password: action.newValue,
       };
     }
   }

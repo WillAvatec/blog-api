@@ -7,7 +7,7 @@ const UserForm = () => {
   const [state, dispatch] = useReducer(reducer, {
     username: "",
     password: "",
-    confirm: "",
+    dbl_password: "",
   });
 
   const handleName = (e) => {
@@ -27,14 +27,13 @@ const UserForm = () => {
 
     fetch("http://localhost:5000/users", {
       method: "POST",
-      body: {
-        username: state.username,
-        password: state.password,
-        confirm: state.confirm,
+      headers: {
+        "Content-Type": "application/json",
       },
+      body: JSON.stringify(state),
     })
       .then((res) => {
-        console.table(res);
+        console.log(res.json());
       })
       .catch((err) => {
         console.error(err);
