@@ -1,4 +1,5 @@
 import flagImg from "../assets/flag.png";
+import { Link } from "react-router-dom";
 
 const Intro = () => {
   return (
@@ -12,7 +13,7 @@ const Intro = () => {
           </p>
           <ul className="header-links">
             <li>
-              <a>Sign In</a>
+              <Link to="/sign-in"> Sign In </Link>
             </li>
           </ul>
         </header>
