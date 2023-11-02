@@ -9,7 +9,7 @@ const Router = () => {
       element: <App />,
     },
     {
-      path: "/sign-up",
+      path: "/sign-in",
       element: <UserForm />,
     },
   ]);
