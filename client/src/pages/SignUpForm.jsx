@@ -1,5 +1,5 @@
 import { useReducer } from "react";
-import reducer from "../reducers/reducer";
+import reducer from "../reducers/signUp";
 import Logo from "../components/Logo";
 import InputField from "../components/Input";
 
