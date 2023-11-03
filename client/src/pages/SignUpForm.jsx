@@ -1,7 +1,7 @@
-import { number, string, func } from "prop-types";
 import { useReducer } from "react";
 import reducer from "../reducers/reducer";
 import Logo from "../components/Logo";
+import InputField from "../components/Input";
 
 const UserForm = () => {
   const [state, dispatch] = useReducer(reducer, {
@@ -73,37 +73,6 @@ const UserForm = () => {
       </form>
     </div>
   );
-};
-
-const InputField = ({ max, min, type, name, cb, label }) => {
-  return (
-    <label>
-      <input
-        type={type}
-        maxLength={max}
-        minLength={min}
-        name={name}
-        onChange={cb}
-        placeholder={label}
-        required
-      />
-    </label>
-  );
-};
-
-InputField.propTypes = {
-  max: number,
-  min: number,
-  type: string.isRequired,
-  name: string.isRequired,
-  label: string.isRequired,
-  cb: func,
-};
-
-InputField.defaultProps = {
-  max: 99,
-  min: 0,
-  label: "Input",
 };
 
 export default UserForm;
