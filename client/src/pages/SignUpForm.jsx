@@ -85,6 +85,7 @@ const InputField = ({ max, min, type, name, cb, label }) => {
         name={name}
         onChange={cb}
         placeholder={label}
+        required
       />
     </label>
   );
