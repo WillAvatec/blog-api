@@ -45,7 +45,7 @@ const UserForm = () => {
       <div className="logo-wrapper">
         <Logo />
       </div>
-      <form id="sign-in" onSubmit={postNewUser}>
+      <form id="sign-in" className="form-page" onSubmit={postNewUser}>
         <h1> Create your account </h1>
         <InputField
           name="username"

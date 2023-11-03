@@ -161,7 +161,7 @@ footer {
   margin-bottom: 4rem;
 }
 
-form#sign-in {
+form.form-page {
   background-color: #1a1a1a;
   color: #ffffff;
   display: flex;
@@ -173,17 +173,17 @@ form#sign-in {
   border-radius: 18px;
 }
 
-#sign-in h1 {
+.form-page h1 {
   color: white;
   font-size: 1.82rem;
 }
 
-#sign-in button[type="submit"] {
+.form-page button[type="submit"] {
   color: #1a1a1a;
   background: white;
 }
 
-#sign-in input {
+.form-page input {
   border: 0;
   border-radius: 8px;
   font-size: 1.1rem;
@@ -193,7 +193,7 @@ form#sign-in {
   margin: 1.72rem 10px;
 }
 
-#sign-in input:focus,
-#sign-in input:focus-visible {
+.form-page input:focus,
+.form-page input:focus-visible {
   outline: 2px solid white;
 }
